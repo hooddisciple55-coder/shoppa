@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Naija Market | Shop Online</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <a class="logo" href="#">🇳🇬 Naija Market</a>
+    <nav>
+      <a href="#products">Shop</a>
+      <a href="#sell">Sell Products</a>
+      <button class="cart-button" onclick="openCart()">
+        🛒 Cart (<span id="cart-count">0</span>)
+      </button>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <p class="tag">YOUR ONLINE MARKETPLACE</p>
+      <h1>Everything you need,<br><span>in one place.</span></h1>
+      <p>Order food, groceries, clothes, gadgets and more from local sellers.</p>
+      <a href="#products" class="main-button">Start Shopping →</a>
+    </div>
+    <div class="hero-image">🛍️</div>
+  </section>
+
+  <section class="search-area">
+    <input id="search" type="search"
+      placeholder="Search for food, shoes, phones..."
+      oninput="renderProducts()">
+  </section>
+
+  <main class="container" id="products">
+    <h2>Explore Products</h2>
+
+    <div class="categories">
+      <button onclick="setCategory('All')">All</button>
+      <button onclick="setCategory('Food')">🍲 Food</button>
+      <button onclick="setCategory('Fashion')">👟 Fashion</button>
+      <button onclick="setCategory('Electronics')">📱 Electronics</button>
+      <button onclick="setCategory('Groceries')">🥑 Groceries</button>
+      <button onclick="setCategory('Home')">🏠 Home</button>
+    </div>
+
+    <div id="product-list" class="product-grid"></div>
+  </main>
+
+  <section class="seller-section" id="sell">
+    <div>
+      <p class="tag">GROW YOUR BUSINESS</p>
+      <h2>Have products to sell?</h2>
+      <p>Join our marketplace and reach more customers.</p>
+      <p class="fee">Seller listing fee: ₦3,000</p>
+    </div>
+    <button class="main-button" onclick="openSellerForm()">
+      Start Selling →
+    </button>
+  </section>
+
+  <footer>
+    <h3>🇳🇬 Naija Market</h3>
+    <p>Buy local. Sell online. Shop with confidence.</p>
+    <p>© 2026 Naija Market</p>
+  </footer>
+
+  <!-- Shopping cart -->
+  <div id="cart-modal" class="modal">
+    <div class="modal-content">
+      <button class="close" onclick="closeModal('cart-modal')">✕</button>
+      <h2>Your Shopping Cart</h2>
+      <div id="cart-items"></div>
+      <h3 id="cart-total">Total: ₦0</h3>
+
+      <form id="checkout-form">
+        <input name="name" placeholder="Your full name" required>
+        <input name="email" type="email" placeholder="Email address" required>
+        <textarea name="address" placeholder="Delivery address" required></textarea>
+        <button class="main-button" type="submit">Pay by Card →</button>
+      </form>
+      <p id="checkout-message"></p>
+    </div>
+  </div>
+
+  <!-- Seller registration -->
+  <div id="seller-modal" class="modal">
+    <div class="modal-content">
+      <button class="close" onclick="closeModal('seller-modal')">✕</button>
+      <h2>Sell on Naija Market</h2>
+      <p>Pay the ₦3,000 listing fee to publish your product.</p>
+
+      <form id="seller-form">
+        <input name="name" placeholder="Seller or business name" required>
+        <input name="email" type="email" placeholder="Email address" required>
+        <input name="title" placeholder="Product name" required>
+        <input name="price" type="number" min="1" placeholder="Price in naira" required>
+
+        <select name="category" required>
+          <option value="">Choose a category</option>
+          <option>Food</option>
+          <option>Fashion</option>
+          <option>Electronics</option>
+          <option>Groceries</option>
+          <option>Home</option>
+          <option>Other</option>
+        </select>
+
+        <textarea name="description" placeholder="Describe your product" required></textarea>
+        <input name="image" type="url" placeholder="Product image URL (optional)">
+
+        <p class="fee">Pay ₦3,000 to publish your listing.</p>
+        <button class="main-button" type="submit">Pay ₦3,000 & Publish</button>
+      </form>
+      <p id="seller-message"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
